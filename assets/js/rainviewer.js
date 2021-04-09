@@ -23,6 +23,8 @@
 //     }
 //   });
 // }
+
+// Leaflet Map
 var map = L.map('mapid').setView([48.8566, 2.3522], 6);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -41,7 +43,7 @@ var radarLayers = [];
 var optionKind = 'radar'; // can be 'radar' or 'satellite'
 
 var optionTileSize = 256; // can be 256 or 512.
-var optionColorScheme = 2; // from 0 to 8. Check the https://rainviewer.com/api/color-schemes.html for additional information
+var optionColorScheme = 7; // from 0 to 8. Check the https://rainviewer.com/api/color-schemes.html for additional information
 var optionSmoothData = 1; // 0 - not smooth, 1 - smooth
 var optionSnowColors = 1; // 0 - do not show snow colors, 1 - show snow colors
 
@@ -195,14 +197,6 @@ function setKind(kind) {
   optionKind = kind;
   initialize(apiData, optionKind);
 }
-
-
-function setColors() {
-  var e = document.getElementById('colors');
-  optionColorScheme = e.options[e.selectedIndex].value;
-  initialize(apiData, optionKind);
-}
-
 
 /**
  * Handle arrow keys for navigation between next \ prev frames

@@ -16,26 +16,15 @@
 <body>
 
     <ul id="map-controls">
-        <li><input type="radio" name="kind" checked="checked" onchange="setKind('radar')">Radar (Past + Future) <input
-                type="radio" name="kind" onchange="setKind('satellite')">Infrared Satellite</li>
-
+        <li>
+            <input type="radio" name="kind" checked="checked" onchange="setKind('radar')">
+            Radar
+            <input type="radio" name="kind" onchange="setKind('satellite')">
+            Satellite
+        </li>
         <li><input type="button" onclick="stop(); showFrame(animationPosition - 1); return;" value="&lt;" /></li>
         <li><input type="button" onclick="playStop();" value="Play / Stop" /></li>
         <li><input type="button" onclick="stop(); showFrame(animationPosition + 1); return;" value="&gt;" /></li>
-
-        <li>
-            <select id="colors" onchange="setColors(); return;">
-                <option value="0">Black and White Values</option>
-                <option value="1">Original</option>
-                <option value="2" selected="selected">Universal Blue</option>
-                <option value="3">TITAN</option>
-                <option value="4">The Weather Channel</option>
-                <option value="5">Meteored</option>
-                <option value="6">NEXRAD Level-III</option>
-                <option value="7">RAINBOW @ SELEX-SI</option>
-                <option value="8">Dark Sky</option>
-            </select>
-        </li>
     </ul>
 
     <div id="mapid">Leaflet Map</div>
