@@ -2,3 +2,29 @@ li {
     list-style: none;
     display: inline-block;
 }
+
+#map-controls {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+#mapid {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#timestamp {
+    text-align: center;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    height: 80px;
+}
