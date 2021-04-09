@@ -145,17 +145,27 @@ function changeRadarPosition(position, preloadOnly) {
   }
   radarLayers[nextFrame.path].setOpacity(100);
 
-
-  var pastOrForecast = nextFrame.time > Date.now() / 1000 ? '(Forecast)' : '';
+  setFrameTime(nextFrame);
+  // var pastOrForecast = nextFrame.time > Date.now() / 1000 ? '(Forecast)' : '';
 
   // Own Code to handle the frame times and present UTC time
-  frameTime = new Date(nextFrame.time * 1000); // Create a time object
+  // frameTime = new Date(nextFrame.time * 1000); // Create a time object
+  // utcString = frameTime.toUTCString(); // Returns 'Fri, 09 Apr 2021 14:40:00 GMT'
+  // time = utcString.slice(17, 22); // Slice out just the HH:MM from the utcString
+  // document.getElementById("timestamp").innerHTML = `${time} UTC ${pastOrForecast}`;
+
+}
+
+function setFrameTime(frame) {
+  var pastOrForecast = frame.time > Date.now() / 1000 ? '(Forecast)' : '';
+
+  frameTime = new Date(frame.time * 1000); // Create a time object
   utcString = frameTime.toUTCString(); // Returns 'Fri, 09 Apr 2021 14:40:00 GMT'
   time = utcString.slice(17, 22); // Slice out just the HH:MM from the utcString
   document.getElementById("timestamp").innerHTML = `${time} UTC ${pastOrForecast}`;
 
-}
 
+}
 /**
  * Check avialability and show particular frame position from the timestamps list
  */
