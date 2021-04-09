@@ -145,26 +145,17 @@ function changeRadarPosition(position, preloadOnly) {
   }
   radarLayers[nextFrame.path].setOpacity(100);
 
-  setFrameTime(nextFrame);
-  // var pastOrForecast = nextFrame.time > Date.now() / 1000 ? '(Forecast)' : '';
-
-  // Own Code to handle the frame times and present UTC time
-  // frameTime = new Date(nextFrame.time * 1000); // Create a time object
-  // utcString = frameTime.toUTCString(); // Returns 'Fri, 09 Apr 2021 14:40:00 GMT'
-  // time = utcString.slice(17, 22); // Slice out just the HH:MM from the utcString
-  // document.getElementById("timestamp").innerHTML = `${time} UTC ${pastOrForecast}`;
-
+  setFrameTime(nextFrame); // Call the setFrameTime function and pass nextFrame
 }
 
+// Own Code to set the UTC time of the frame
 function setFrameTime(frame) {
   var pastOrForecast = frame.time > Date.now() / 1000 ? '(Forecast)' : '';
 
   frameTime = new Date(frame.time * 1000); // Create a time object
-  utcString = frameTime.toUTCString(); // Returns 'Fri, 09 Apr 2021 14:40:00 GMT'
+  utcString = frameTime.toUTCString(); // Returns eg. 'Fri, 09 Apr 2021 14:40:00 GMT'
   time = utcString.slice(17, 22); // Slice out just the HH:MM from the utcString
   document.getElementById("timestamp").innerHTML = `${time} UTC ${pastOrForecast}`;
-
-
 }
 /**
  * Check avialability and show particular frame position from the timestamps list
@@ -211,27 +202,4 @@ function playStop() {
 function setKind(kind) {
   optionKind = kind;
   initialize(apiData, optionKind);
-}
-
-/**
- * Handle arrow keys for navigation between next \ prev frames
- */
-document.onkeydown = function (e) {
-  e = e || window.event;
-  switch (e.which || e.keyCode) {
-    case 37: // left
-      stop();
-      showFrame(animationPosition - 1);
-      break;
-
-    case 39: // right
-      stop();
-      showFrame(animationPosition + 1);
-      break;
-
-    default:
-      return; // exit this handler for other keys
-  }
-  e.preventDefault();
-  return false;
 }
